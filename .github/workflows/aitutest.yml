@@ -1,0 +1,28 @@
+name: Autotest
+on: push
+# jobs:
+#    first: 
+#      runs-on: windows-latest
+#      steps:
+#         - name: Checkuot
+#           uses: actions/checkout@v3
+#         - name: Install deps
+#           run: npm ci
+#         - name: First
+#           run: npm run
+stages:
+  - test
+
+test:
+  image: cypress/browsers:node16.16.0-chrome107-ff107-edge
+  stage: test
+  script:
+    # install dependencies
+    - run: npm ci
+    # start the server in the background
+    - run: npm start &
+    # run Cypress tests
+    - run: npx cypress run --browser chrome
+
+     
+
