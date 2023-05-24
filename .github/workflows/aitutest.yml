@@ -22,7 +22,7 @@ test:
     # start the server in the background
     - npm start &
     # run Cypress tests
-    - npx cypress run --browser chrome
+    - npx cypress run e2e --browser firefox
 
      
 
