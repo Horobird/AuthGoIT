@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "cypress": "^12.13.0"
+  },
+  "dependencies": {
+    "build": "^0.1.4"
   }
 }
