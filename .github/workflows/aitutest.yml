@@ -18,11 +18,11 @@ test:
   stage: test
   script:
     # install dependencies
-    - run: npm ci
+    - npm ci
     # start the server in the background
-    - run: npm start &
+    - npm start &
     # run Cypress tests
-    - run: npx cypress run --browser chrome
+    - npx cypress run --browser chrome
 
      
 
