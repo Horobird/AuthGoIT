@@ -27,4 +27,9 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
-      
+          if-no-files-found: warn
+        env:
+          CI: 1
+          CYPRESS_CACHE_FOLDER: C:\Users\runneradmin\.cache\Cypress
+          npm_config_cache: C:\Users\runneradmin\.npm
+          TERM: xterm
