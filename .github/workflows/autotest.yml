@@ -1,29 +1,27 @@
 name: Cypress Tests
+# Устанавливаем триггер
 on: [push]
 jobs:
   cypress-run:
+# Развертываем среду Widows c Cypress 
     runs-on: windows-latest
     steps:
+# Копируем в эту среду наш репазиторий
       - name: Checkout
         uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+# Запускаем тест. Будет искать в ./e2e. Сколько найдет, столько выполнит. 
       - name: Cypress run 
         uses: cypress-io/github-action@v5
+# Хотим Chrome
         with:
           browser: chrome
-        # after the test run completes
-      # store videos and any screenshots
-      # NOTE: screenshots will be generated only if E2E test failed
-      # thus we store screenshots only on failures
-      # Alternative: create and commit an empty cypress/screenshots folder
-      # to always have something to upload
+# Хотим скрины
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-      # Test run video was always captured, so this action uses "always()" condition
+# Хотим видео
       - uses: actions/upload-artifact@v3
         if: always()
         with:
