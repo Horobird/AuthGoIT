@@ -10,16 +10,18 @@ const loginPage = new Login();
 import { homePageTests } from "./pages/date/homePageTests";
 
 //Выполняем тесты
-describe("Авторизация", {browser: 'chrome'}, () => {
-    for (let homePageTest of homePageTests) {
-      it(homePageTest.name, () => {
-        homePage.manePage();
-        homePage.getAuth(
-          homePageTest.email,
-          homePageTest.password
-        );
+describe("Авторизация", { browser: "chrome" }, () => {
+  for (let homePageTest of homePageTests) {
+    it(homePageTest.name, () => {
+      homePage.manePage();
+      homePage.getAuth(homePageTest.email, homePageTest.password);
+      if (homePageTest.name.includes("невалидн")) {
+        //Для невалидных
+        loginPage.alertWindow();
+        //Для валидных
+      } else {
         loginPage.navPage();
-      });
-    }
-  
+      }
+    });
+  }
 });
